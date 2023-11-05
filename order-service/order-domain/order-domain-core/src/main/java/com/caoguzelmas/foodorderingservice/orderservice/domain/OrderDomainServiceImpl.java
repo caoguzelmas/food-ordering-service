@@ -6,7 +6,7 @@ import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Restaurant
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCancelledEvent;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCreatedEvent;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderPaidEvent;
-import com.caoguzelmas.foodorderingservice.orderservice.domain.exception.OrderException;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.exception.OrderDomainException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.ZoneId;
@@ -59,7 +59,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
 
     private void validateRestaurant(Restaurant restaurant) {
         if (!restaurant.isActive()) {
-            throw new OrderException("Restaurant with id " + restaurant.getId().getValue()
+            throw new OrderDomainException("Restaurant with id " + restaurant.getId().getValue()
                     + " is currently not active!");
         }
     }

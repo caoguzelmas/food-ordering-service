@@ -2,7 +2,7 @@ package com.caoguzelmas.foodorderingservice.orderservice.domain.entity;
 
 import com.caoguzelmas.foodorderingservice.domain.entity.AggregateRoot;
 import com.caoguzelmas.foodorderingservice.domain.valueobject.*;
-import com.caoguzelmas.foodorderingservice.orderservice.domain.exception.OrderException;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.exception.OrderDomainException;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.OrderItemId;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.StreetAddress;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.TrackingId;
@@ -31,21 +31,21 @@ public class Order extends AggregateRoot<OrderId> {
 
     public void pay () {
         if (!orderStatus.equals(OrderStatus.PENDING)) {
-           throw new OrderException("Order is not in correct state for pay operation!");
+           throw new OrderDomainException("Order is not in correct state for pay operation!");
         }
         orderStatus = OrderStatus.PAID;
     }
 
     public void approve() {
         if (!orderStatus.equals(OrderStatus.PAID)) {
-            throw new OrderException("Order is not in correct state for approve operation!");
+            throw new OrderDomainException("Order is not in correct state for approve operation!");
         }
         orderStatus = OrderStatus.APPROVED;
     }
 
     public void initCancel(List<String> failureMessages) {
         if (!orderStatus.equals(OrderStatus.PAID)) {
-            throw new OrderException("Order is not in correct state for initCancel operation!");
+            throw new OrderDomainException("Order is not in correct state for initCancel operation!");
         }
         orderStatus = OrderStatus.CANCELING;
         updateFailureMessages(failureMessages);
@@ -53,7 +53,7 @@ public class Order extends AggregateRoot<OrderId> {
 
     public void cancel(List<String> failureMessages) {
         if (!(orderStatus.equals(OrderStatus.PENDING) || orderStatus.equals(OrderStatus.CANCELING))) {
-            throw new OrderException("Order is not in correct state for cancel operation!");
+            throw new OrderDomainException("Order is not in correct state for cancel operation!");
         }
         orderStatus = OrderStatus.CANCELLED;
         updateFailureMessages(failureMessages);
@@ -71,13 +71,13 @@ public class Order extends AggregateRoot<OrderId> {
 
     private void validateInitialOrder() {
         if (orderStatus != null || getId() != null) {
-            throw new OrderException("Order is not in correct state for initialization!");
+            throw new OrderDomainException("Order is not in correct state for initialization!");
         }
     }
 
     private void validateTotalPrice() {
         if (price == null || !price.isGreaterThanZero()) {
-            throw new OrderException("Total price must be greater than zero!");
+            throw new OrderDomainException("Total price must be greater than zero!");
         }
     }
 
@@ -88,14 +88,14 @@ public class Order extends AggregateRoot<OrderId> {
         }).reduce(Money.ZERO, Money::add);
 
         if (!price.equals(orderItemsTotal)) {
-            throw new OrderException("Total price: " + price.getAmount()
+            throw new OrderDomainException("Total price: " + price.getAmount()
                     + " is not equal to Order items in total: " + orderItemsTotal.getAmount() + "!");
         }
     }
 
     private void validateItemPrice(OrderItem item) {
         if (!item.isPriceValid()) {
-            throw new OrderException("Order item price: " + item.getPrice().getAmount()
+            throw new OrderDomainException("Order item price: " + item.getPrice().getAmount()
                     + " is not valid for product " + item.getProduct().getId().getValue());
         }
     }
