@@ -64,6 +64,11 @@
             </dependency>
             <dependency>
                 <groupId>com.caoguzelmas.food-ordering-service</groupId>
+                <artifactId>common-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caoguzelmas.food-ordering-service</groupId>
                 <artifactId>kafka-producer</artifactId>
                 <version>${project.version}</version>
             </dependency>
