@@ -8,8 +8,7 @@ import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Order;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.OrderItem;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Product;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Restaurant;
-import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.StreetAddress;
-import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.TrackingId;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.DeliveryAddress;
 import com.foodorderingservice.orderservice.domain.dto.create.CreateOrderCommand;
 import com.foodorderingservice.orderservice.domain.dto.create.CreateOrderResponse;
 import com.foodorderingservice.orderservice.domain.dto.create.OrderAddress;
@@ -35,7 +34,7 @@ public class OrderDataMapper {
         return Order.Builder.builder()
                 .customerId(new CustomerId(createOrderCommand.getCustomerId()))
                 .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
-                .streetAddress(orderAddressToStreetAddress(createOrderCommand.getOrderAddress()))
+                .deliveryAddress(orderAddressToStreetAddress(createOrderCommand.getOrderAddress()))
                 .price(new Money(createOrderCommand.getPrice()))
                 .orderItems(orderItemsToOrderItemsEntities(createOrderCommand.getOrderItems()))
                 .build();
@@ -68,8 +67,8 @@ public class OrderDataMapper {
                         .build()).collect(Collectors.toList());
     }
 
-    private StreetAddress orderAddressToStreetAddress(OrderAddress orderAddress) {
-        return new StreetAddress(
+    private DeliveryAddress orderAddressToStreetAddress(OrderAddress orderAddress) {
+        return new DeliveryAddress(
                 UUID.randomUUID(),
                 orderAddress.getStreet(),
                 orderAddress.getPostalCode(),

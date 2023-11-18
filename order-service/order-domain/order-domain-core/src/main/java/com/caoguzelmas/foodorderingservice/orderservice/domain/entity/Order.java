@@ -4,7 +4,7 @@ import com.caoguzelmas.foodorderingservice.domain.entity.AggregateRoot;
 import com.caoguzelmas.foodorderingservice.domain.valueobject.*;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.exception.OrderDomainException;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.OrderItemId;
-import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.StreetAddress;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.DeliveryAddress;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.TrackingId;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class Order extends AggregateRoot<OrderId> {
 
     private final CustomerId customerId;
     private final RestaurantId restaurantId;
-    private final StreetAddress streetAddress;
+    private final DeliveryAddress deliveryAddress;
     private final Money price;
     private final List<OrderItem> orderItems;
 
@@ -116,7 +116,7 @@ public class Order extends AggregateRoot<OrderId> {
         super.setId(builder.orderId);
         customerId = builder.customerId;
         restaurantId = builder.restaurantId;
-        streetAddress = builder.streetAddress;
+        deliveryAddress = builder.deliveryAddress;
         price = builder.price;
         orderItems = builder.orderItems;
         trackingId = builder.trackingId;
@@ -132,8 +132,8 @@ public class Order extends AggregateRoot<OrderId> {
         return restaurantId;
     }
 
-    public StreetAddress getStreetAddress() {
-        return streetAddress;
+    public DeliveryAddress getDeliveryAddress() {
+        return deliveryAddress;
     }
 
     public Money getPrice() {
@@ -160,12 +160,14 @@ public class Order extends AggregateRoot<OrderId> {
         private OrderId orderId;
         private CustomerId customerId;
         private RestaurantId restaurantId;
-        private StreetAddress streetAddress;
+        private DeliveryAddress deliveryAddress;
         private Money price;
         private List<OrderItem> orderItems;
         private TrackingId trackingId;
         private OrderStatus orderStatus;
         private List<String> failureMessages;
+
+        public static final String FAILURE_MESSAGE_DELIMITER = ",";
 
         private Builder() {
         }
@@ -189,8 +191,8 @@ public class Order extends AggregateRoot<OrderId> {
             return this;
         }
 
-        public Builder streetAddress(StreetAddress val) {
-            streetAddress = val;
+        public Builder deliveryAddress(DeliveryAddress val) {
+            deliveryAddress = val;
             return this;
         }
 
