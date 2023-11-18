@@ -44,7 +44,7 @@
       <module name="order-domain" options="-parameters" />
       <module name="order-domain-core" options="-parameters" />
       <module name="order-messaging" options="-parameters" />
-      <module name="order-service" options="-parameters" />
+      <module name="order-service" options="" />
     </option>
   </component>
 </project>
