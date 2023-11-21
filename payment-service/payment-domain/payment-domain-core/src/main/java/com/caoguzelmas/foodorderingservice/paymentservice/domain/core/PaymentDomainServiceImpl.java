@@ -60,7 +60,7 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
         updateCreditHistory(payment, creditHistories, TransactionType.CREDIT);
 
         if (failureMessages.isEmpty()) {
-            log.info("Payment is cancelled for order id: ", payment.getOrderId().getValue());
+            log.info("Payment is cancelled for order id: {}", payment.getOrderId().getValue());
             payment.updateStatus(PaymentStatus.CANCELLED);
 
             return new PaymentCanceledEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)));
