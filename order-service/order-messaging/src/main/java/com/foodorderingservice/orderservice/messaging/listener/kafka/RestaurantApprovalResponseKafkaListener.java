@@ -3,7 +3,7 @@ package com.foodorderingservice.orderservice.messaging.listener.kafka;
 import com.caoguzelmas.foodorderingservice.kafka.consumer.KafkaConsumer;
 import com.caoguzelmas.foodorderingservice.kafka.order.avro.model.OrderApprovalStatus;
 import com.caoguzelmas.foodorderingservice.kafka.order.avro.model.RestaurantApprovalResponseAvroModel;
-import com.foodorderingservice.orderservice.domain.ports.input.message.listener.restaurantapproval.RestaurantApprovalResponseMessageListener;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.input.message.listener.restaurantapproval.RestaurantApprovalResponseMessageListener;
 import com.foodorderingservice.orderservice.messaging.mapper.OrderMessagingDataMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

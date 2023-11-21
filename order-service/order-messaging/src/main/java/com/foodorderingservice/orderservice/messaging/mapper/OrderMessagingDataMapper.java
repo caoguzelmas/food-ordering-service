@@ -7,8 +7,8 @@ import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Order;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCancelledEvent;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCreatedEvent;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderPaidEvent;
-import com.foodorderingservice.orderservice.domain.dto.message.PaymentResponse;
-import com.foodorderingservice.orderservice.domain.dto.message.RestaurantApprovalResponse;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.dto.message.PaymentResponse;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.dto.message.RestaurantApprovalResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

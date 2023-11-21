@@ -3,14 +3,11 @@ package com.foodorderingservice.orderservice.messaging.publisher.kafka;
 import com.caoguzelmas.foodorderingservice.kafka.order.avro.model.PaymentRequestAvroModel;
 import com.caoguzelmas.foodorderingservice.kafka.producer.service.KafkaProducer;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCreatedEvent;
-import com.foodorderingservice.orderservice.domain.config.OrderServiceConfigData;
-import com.foodorderingservice.orderservice.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.config.OrderServiceConfigData;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
 import com.foodorderingservice.orderservice.messaging.mapper.OrderMessagingDataMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.producer.RecordMetadata;
-import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFutureCallback;
 
 @Slf4j
 @Component

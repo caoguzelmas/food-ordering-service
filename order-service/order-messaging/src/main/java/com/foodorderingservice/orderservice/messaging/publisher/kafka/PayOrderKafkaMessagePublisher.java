@@ -1,11 +1,10 @@
 package com.foodorderingservice.orderservice.messaging.publisher.kafka;
 
-import com.caoguzelmas.foodorderingservice.kafka.order.avro.model.PaymentRequestAvroModel;
 import com.caoguzelmas.foodorderingservice.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
 import com.caoguzelmas.foodorderingservice.kafka.producer.service.KafkaProducer;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderPaidEvent;
-import com.foodorderingservice.orderservice.domain.config.OrderServiceConfigData;
-import com.foodorderingservice.orderservice.domain.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.config.OrderServiceConfigData;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
 import com.foodorderingservice.orderservice.messaging.mapper.OrderMessagingDataMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

@@ -4,7 +4,7 @@ import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.order.mapper.
 import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.order.repository.OrderJpaRepository;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Order;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.TrackingId;
-import com.foodorderingservice.orderservice.domain.ports.output.repository.OrderRepository;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.output.repository.OrderRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

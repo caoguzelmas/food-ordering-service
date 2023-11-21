@@ -3,7 +3,7 @@ package com.caoguzelmas.foodorderingservice.orderservice.dataaccess.customer.ada
 import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.customer.mapper.CustomerDataAccessMapper;
 import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.customer.repository.CustomerJpaRepository;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Customer;
-import com.foodorderingservice.orderservice.domain.ports.output.repository.CustomerRepository;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.output.repository.CustomerRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
