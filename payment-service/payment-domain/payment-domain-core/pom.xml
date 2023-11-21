@@ -12,4 +12,11 @@
 
     <artifactId>payment-domain-core</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.caoguzelmas.food-ordering-service</groupId>
+            <artifactId>common-domain</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
