@@ -6,13 +6,13 @@ import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.entity.Pay
 import java.time.ZonedDateTime;
 import java.util.Collections;
 
-public class PaymentCanceledEvent extends PaymentEvent {
+public class PaymentCancelledEvent extends PaymentEvent {
 
-    private final DomainEventPublisher<PaymentCanceledEvent> paymentCanceledEventDomainEventPublisher;
+    private final DomainEventPublisher<PaymentCancelledEvent> paymentCanceledEventDomainEventPublisher;
 
-    public PaymentCanceledEvent(Payment payment,
-                                ZonedDateTime createdAt,
-                                DomainEventPublisher<PaymentCanceledEvent> paymentCanceledEventDomainEventPublisher) {
+    public PaymentCancelledEvent(Payment payment,
+                                 ZonedDateTime createdAt,
+                                 DomainEventPublisher<PaymentCancelledEvent> paymentCanceledEventDomainEventPublisher) {
         super(payment, createdAt, Collections.emptyList());
         this.paymentCanceledEventDomainEventPublisher = paymentCanceledEventDomainEventPublisher;
     }

@@ -6,7 +6,7 @@ import com.caoguzelmas.foodorderingservice.domain.valueobject.PaymentStatus;
 import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.entity.CreditEntry;
 import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.entity.CreditHistory;
 import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.entity.Payment;
-import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.event.PaymentCanceledEvent;
+import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.event.PaymentCancelledEvent;
 import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.event.PaymentCompletedEvent;
 import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.event.PaymentEvent;
 import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.event.PaymentFailedEvent;
@@ -58,7 +58,7 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
                                                  CreditEntry creditEntry,
                                                  List<CreditHistory> creditHistories,
                                                  List<String> failureMessages,
-                                                 DomainEventPublisher<PaymentCanceledEvent> paymentCanceledEventDomainEventPublisher,
+                                                 DomainEventPublisher<PaymentCancelledEvent> paymentCanceledEventDomainEventPublisher,
                                                  DomainEventPublisher<PaymentFailedEvent> paymentFailedEventDomainEventPublisher) {
         payment.validatePayment(failureMessages);
         addCreditEntry(payment, creditEntry);
@@ -68,7 +68,7 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
             log.info("Payment is cancelled for order id: {}", payment.getOrderId().getValue());
             payment.updateStatus(PaymentStatus.CANCELLED);
 
-            return new PaymentCanceledEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), paymentCanceledEventDomainEventPublisher);
+            return new PaymentCancelledEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), paymentCanceledEventDomainEventPublisher);
         } else {
             log.info("Payment cancellation is failed for order id: {}", payment.getOrderId().getValue());
             payment.updateStatus(PaymentStatus.FAILED);

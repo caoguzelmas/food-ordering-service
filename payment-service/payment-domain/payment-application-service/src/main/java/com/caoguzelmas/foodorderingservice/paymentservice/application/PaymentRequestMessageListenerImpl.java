@@ -2,11 +2,6 @@ package com.caoguzelmas.foodorderingservice.paymentservice.application;
 
 import com.caoguzelmas.foodorderingservice.paymentservice.application.dto.PaymentRequest;
 import com.caoguzelmas.foodorderingservice.paymentservice.application.ports.input.message.listener.PaymentRequestMessageListener;
-import com.caoguzelmas.foodorderingservice.paymentservice.application.ports.output.message.publisher.PaymentCancelledMessagePublisher;
-import com.caoguzelmas.foodorderingservice.paymentservice.application.ports.output.message.publisher.PaymentCompletedMessagePublisher;
-import com.caoguzelmas.foodorderingservice.paymentservice.application.ports.output.message.publisher.PaymentFailedMessagePublisher;
-import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.event.PaymentCanceledEvent;
-import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.event.PaymentCompletedEvent;
 import com.caoguzelmas.foodorderingservice.paymentservice.domain.core.event.PaymentEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
