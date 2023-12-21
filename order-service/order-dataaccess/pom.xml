@@ -27,6 +27,10 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.caoguzelmas.food-ordering-service</groupId>
+            <artifactId>common-dataaccess</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,6 +1,7 @@
-package com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.repository;
+package com.caoguzelmas.foodorderingservice.common.dataaccess.repository;
 
-import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.entity.RestaurantEntity;
+
+import com.caoguzelmas.foodorderingservice.common.dataaccess.entity.RestaurantEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

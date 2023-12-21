@@ -1,4 +1,4 @@
-package com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.entity;
+package com.caoguzelmas.foodorderingservice.common.dataaccess.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -28,6 +28,7 @@ public class RestaurantEntity {
     private Boolean restaurantActive;
     private String productName;
     private BigDecimal productPrice;
+    private Boolean productAvailable;
 
     @Override
     public boolean equals(Object o) {

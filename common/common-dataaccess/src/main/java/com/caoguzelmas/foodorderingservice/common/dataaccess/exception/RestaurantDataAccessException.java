@@ -1,4 +1,4 @@
-package com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.exception;
+package com.caoguzelmas.foodorderingservice.common.dataaccess.exception;
 
 public class RestaurantDataAccessException extends RuntimeException {
 

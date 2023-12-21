@@ -1,4 +1,4 @@
-package com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.entity;
+package com.caoguzelmas.foodorderingservice.common.dataaccess.entity;
 
 import lombok.*;
 
