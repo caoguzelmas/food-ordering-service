@@ -10,7 +10,6 @@
         <module>customer-service</module>
         <module>payment-service</module>
         <module>restaurant-service</module>
-        <module>common/common-dataaccess</module>
     </modules>
 
     <parent>
@@ -36,6 +35,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.caoguzelmas.food-ordering-service</groupId>
+                <artifactId>saga</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.caoguzelmas.food-ordering-service</groupId>
                 <artifactId>order-domain-core</artifactId>

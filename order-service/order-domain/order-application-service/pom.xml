@@ -18,6 +18,10 @@
     <dependencies>
         <dependency>
             <groupId>com.caoguzelmas.food-ordering-service</groupId>
+            <artifactId>saga</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caoguzelmas.food-ordering-service</groupId>
             <artifactId>order-domain-core</artifactId>
         </dependency>
         <dependency>
