@@ -1,10 +1,10 @@
 package com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.mapper;
 
+import com.caoguzelmas.foodorderingservice.common.dataaccess.entity.RestaurantEntity;
+import com.caoguzelmas.foodorderingservice.common.dataaccess.exception.RestaurantDataAccessException;
 import com.caoguzelmas.foodorderingservice.domain.valueobject.Money;
 import com.caoguzelmas.foodorderingservice.domain.valueobject.ProductId;
 import com.caoguzelmas.foodorderingservice.domain.valueobject.RestaurantId;
-import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.entity.RestaurantEntity;
-import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.exception.RestaurantDataAccessException;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Product;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Restaurant;
 import org.springframework.stereotype.Component;

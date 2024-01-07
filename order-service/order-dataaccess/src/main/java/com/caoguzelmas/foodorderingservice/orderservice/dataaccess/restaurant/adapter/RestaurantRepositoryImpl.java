@@ -1,8 +1,8 @@
 package com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.adapter;
 
-import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.entity.RestaurantEntity;
+import com.caoguzelmas.foodorderingservice.common.dataaccess.entity.RestaurantEntity;
+import com.caoguzelmas.foodorderingservice.common.dataaccess.repository.RestaurantJpaRepository;
 import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.mapper.RestaurantDataAccessMapper;
-import com.caoguzelmas.foodorderingservice.orderservice.dataaccess.restaurant.repository.RestaurantJpaRepository;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Restaurant;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.output.repository.RestaurantRepository;
 import org.springframework.stereotype.Component;
