@@ -4,7 +4,6 @@ import com.caoguzelmas.foodorderingservice.orderservice.domain.dto.create.Create
 import com.caoguzelmas.foodorderingservice.orderservice.domain.dto.create.CreateOrderResponse;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCreatedEvent;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.mapper.OrderDataMapper;
-import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

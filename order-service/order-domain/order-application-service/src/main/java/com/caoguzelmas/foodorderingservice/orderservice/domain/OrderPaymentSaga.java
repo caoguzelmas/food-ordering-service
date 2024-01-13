@@ -1,20 +1,13 @@
 package com.caoguzelmas.foodorderingservice.orderservice.domain;
 
 import com.caoguzelmas.foodorderingservice.domain.event.EmptyEvent;
-import com.caoguzelmas.foodorderingservice.domain.valueobject.OrderId;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.dto.message.PaymentResponse;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Order;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderPaidEvent;
-import com.caoguzelmas.foodorderingservice.orderservice.domain.exception.OrderNotFoundException;
-import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
-import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.output.repository.OrderRepository;
 import com.caoguzelmas.foodorderingservice.saga.SagaStep;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
-import java.util.UUID;
 
 @Slf4j
 @Component

@@ -42,6 +42,11 @@
             </dependency>
             <dependency>
                 <groupId>com.caoguzelmas.food-ordering-service</groupId>
+                <artifactId>outbox</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caoguzelmas.food-ordering-service</groupId>
                 <artifactId>order-domain-core</artifactId>
                 <version>${project.version}</version>
             </dependency>

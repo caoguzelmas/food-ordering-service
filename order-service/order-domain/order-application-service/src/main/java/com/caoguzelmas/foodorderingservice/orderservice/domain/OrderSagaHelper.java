@@ -1,9 +1,11 @@
 package com.caoguzelmas.foodorderingservice.orderservice.domain;
 
 import com.caoguzelmas.foodorderingservice.domain.valueobject.OrderId;
+import com.caoguzelmas.foodorderingservice.domain.valueobject.OrderStatus;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Order;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.exception.OrderNotFoundException;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.ports.output.repository.OrderRepository;
+import com.caoguzelmas.foodorderingservice.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -33,5 +35,15 @@ public class OrderSagaHelper {
 
     public void saveOrder(Order order) {
         orderRepository.save(order);
+    }
+
+    SagaStatus orderStatusToSagaStatus(OrderStatus orderStatus) {
+        return switch (orderStatus) {
+            case PAID -> SagaStatus.PROCESSING;
+            case APPROVED -> SagaStatus.SUCCEEDED;
+            case CANCELING -> SagaStatus.COMPENSATING;
+            case CANCELLED -> SagaStatus.COMPENSATED;
+            default -> SagaStatus.STARTED;
+        };
     }
 }
