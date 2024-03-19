@@ -6,6 +6,9 @@ import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.OrderItem;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Product;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Restaurant;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCreatedEvent;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderPaidEvent;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.outbox.model.approval.OrderApprovalEventPayload;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.outbox.model.approval.OrderApprovalEventProduct;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.outbox.model.payment.OrderPaymentEventPayload;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.DeliveryAddress;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.dto.create.CreateOrderCommand;
@@ -61,6 +64,21 @@ public class OrderDataMapper {
                 .orderId(orderCreatedEvent.getOrder().getId().getValue().toString())
                 .price(orderCreatedEvent.getOrder().getPrice().getAmount())
                 .paymentOrderStatus(PaymentOrderStatus.PENDING.name())
+                .build();
+    }
+
+    public OrderApprovalEventPayload orderPaidEventToOrderApprovalEventPayload(OrderPaidEvent orderPaidEvent) {
+        return OrderApprovalEventPayload.builder()
+                .orderId(orderPaidEvent.getOrder().getId().getValue().toString())
+                .restaurantId(orderPaidEvent.getOrder().getRestaurantId().getValue().toString())
+                .restaurantOrderStatus(RestaurantOrderStatus.PAID.name())
+                .products(orderPaidEvent.getOrder().getOrderItems().stream().map(orderItem ->
+                        OrderApprovalEventProduct.builder()
+                                .id(orderItem.getProduct().getId().getValue().toString())
+                                .quantity(orderItem.getQuantity())
+                                .build()).collect(Collectors.toList()))
+                .price(orderPaidEvent.getOrder().getPrice().getAmount())
+                .createdAt(orderPaidEvent.getCreatedAt())
                 .build();
     }
 
