@@ -1,13 +1,12 @@
 package com.caoguzelmas.foodorderingservice.orderservice.domain.mapper;
 
-import com.caoguzelmas.foodorderingservice.domain.valueobject.CustomerId;
-import com.caoguzelmas.foodorderingservice.domain.valueobject.Money;
-import com.caoguzelmas.foodorderingservice.domain.valueobject.ProductId;
-import com.caoguzelmas.foodorderingservice.domain.valueobject.RestaurantId;
+import com.caoguzelmas.foodorderingservice.domain.valueobject.*;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Order;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.OrderItem;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Product;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Restaurant;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCreatedEvent;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.outbox.model.payment.OrderPaymentEventPayload;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.valueobject.DeliveryAddress;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.dto.create.CreateOrderCommand;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.dto.create.CreateOrderResponse;
@@ -53,6 +52,15 @@ public class OrderDataMapper {
                 .orderTrackingId(order.getTrackingId().getValue())
                 .orderStatus(order.getOrderStatus())
                 .failureMessages(order.getFailureMessages())
+                .build();
+    }
+
+    public OrderPaymentEventPayload orderCreatedEventToOrderPaymentEventPayload(OrderCreatedEvent orderCreatedEvent) {
+        return OrderPaymentEventPayload.builder()
+                .customerId(orderCreatedEvent.getOrder().getCustomerId().getValue().toString())
+                .orderId(orderCreatedEvent.getOrder().getId().getValue().toString())
+                .price(orderCreatedEvent.getOrder().getPrice().getAmount())
+                .paymentOrderStatus(PaymentOrderStatus.PENDING.name())
                 .build();
     }
 
