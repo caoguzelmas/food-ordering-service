@@ -5,6 +5,7 @@ import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Order;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.OrderItem;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Product;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.entity.Restaurant;
+import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCancelledEvent;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderCreatedEvent;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.event.OrderPaidEvent;
 import com.caoguzelmas.foodorderingservice.orderservice.domain.outbox.model.approval.OrderApprovalEventPayload;
@@ -64,6 +65,16 @@ public class OrderDataMapper {
                 .orderId(orderCreatedEvent.getOrder().getId().getValue().toString())
                 .price(orderCreatedEvent.getOrder().getPrice().getAmount())
                 .paymentOrderStatus(PaymentOrderStatus.PENDING.name())
+                .build();
+    }
+
+    public OrderPaymentEventPayload orderCancelledEventToOrderPaymentEventPayload(OrderCancelledEvent orderCancelledEvent) {
+        return OrderPaymentEventPayload.builder()
+                .customerId(orderCancelledEvent.getOrder().getCustomerId().getValue().toString())
+                .orderId(orderCancelledEvent.getOrder().getId().getValue().toString())
+                .price(orderCancelledEvent.getOrder().getPrice().getAmount())
+                .createdAt(orderCancelledEvent.getCreatedAt())
+                .paymentOrderStatus(PaymentOrderStatus.CANCELLED.name())
                 .build();
     }
 
